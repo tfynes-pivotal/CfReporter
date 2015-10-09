@@ -2,6 +2,6 @@ vcap:
   services:
     pcf:
       credentials:
-        cfusername: [user]
-        cfpassword: [pass]
-        cftarget: [cfurl]
+        cfusername: user
+        cfpassword: pass
+        cftarget: https://cfurl
