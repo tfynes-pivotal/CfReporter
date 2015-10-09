@@ -1,0 +1,7 @@
+vcap:
+  services:
+    pcf:
+      credentials:
+        cfusername: [user]
+        cfpassword: [pass]
+        cftarget: [cfurl]

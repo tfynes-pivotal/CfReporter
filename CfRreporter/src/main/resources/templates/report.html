@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>CF Reporter</title>
+</head>
+<body>
+<h1>CF Reporter</h1>
+
+
+<table border="2">
+<thead>
+<tr><td colspan="11"><center>CF Reporter</center></td></tr>
+<tr>
+	<td>AppName</td>
+	<td>SpaceName</td>
+	<td>OrgName</td>
+	<td>Instances</td>
+	<td>Memory</td>
+	<td>diskQuota</td>
+	<td>uris</td>
+	<td>services</td>
+	<td>state</td>
+	<td>env</td>
+	
+</tr>
+
+</thead>
+<tbody>
+
+ <tr th:each="app: ${apps}">
+ 	<td th:text="${app.name}">AppName</td>
+ 	<td th:text="${app.space.name}">SpaceName</td>
+ 	<td th:text="${spacetable['__${app.space.meta.guid}__'].name}">orgname</td>
+ 	<td th:text="${app.runningInstances}+'/'+${app.instances}">Instance Count</td>
+ 	<td th:text="${app.memory}">Memory</td>
+ 	<td th:text="${app.diskQuota}">DiskQuota</td>
+ 	<td>
+ 		<table>
+ 			<tr th:each="thisuri: ${app.uris}">
+ 				<tr><td th:text="${thisuri}">thisURI</td></tr>
+ 			</tr>
+ 		</table>
+ 	</td>
+ 	<td>
+ 		<table>
+ 			<tr th:each="service: ${app.services}">
+ 				<tr><td th:text="${service}">service</td></tr>
+ 			</tr>
+ 		</table>
+ 	</td>
+ 	<td th:text="${app.state}">State</td>
+ 	
+ 	<td>
+ 		<table>
+ 			<tr th:each="thisEnv: ${app.env}">
+ 				<tr><td th:text="${thisEnv}">env</td></tr>
+ 				    
+ 			</tr>
+ 		</table>
+ 	</td>
+ </tr>
+
+
+</tbody>
+</table>
+
+</body>
+</html>

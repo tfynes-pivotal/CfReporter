@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Cloud Foundry Deployed Application Reporter</title>
+	</head>
+	<body>
+		<h1><center>Cloud Foundry Application Reporter</center></h1>
+		<hr/>
+		<p>CfReporter contacts the cloud controller getting a list of all deployed in all spaces/orgs for which the user has permissions to view.</p>
+		<h2>Usage:</h2>
+		<p>View report by browsing to http://[cf reporter url]/report</p>
+			<h2>Configuration:</h2>
+			<h3>Running Locally</h3>
+			<p>
+				To run locally, provide the username, password and cloud foundry url's as environment variables;<p/>
+					vcap.services.credentails.pcf.cfusername<p/>
+					vcap.services.credentials.pcf.cfpassword<p/>
+					vcap.services.credentials.pcf.cftarget<p/>
+			</p>
+			<h3>Running as a Cloud Foundry Application</h3>
+			<p/>
+			Register the target cloud foundry as a user provided service called 'pcf' and bind this deployed application to it<p/>
+
+			cf cups pcf -p '{"cfusername":"[user]","cfpassword":"[pass]","cftarget":"https://api.[cf target]"}'<p/>
+
+			cf push cfreporter -m 512M -p cfreporter.jar --no-start<p/>
+			cf bind-service cfreporter pcf<p/>
+			cf start cfreporter<p/>
+			
+			<hr/>
+			
+			<a href="/report">View Report</a>
+			
+	</body>
+</html>
